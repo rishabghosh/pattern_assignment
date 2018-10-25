@@ -1,3 +1,165 @@
+/* -------- FILLED RECTANGLE -------- */
+
+const generateStarWidth = function(width){
+  let generateLine = "";
+  for(let currentWidth = 1; currentWidth <= width; currentWidth ++){
+    generateLine += "*";
+  }
+  return generateLine;
+}
+
+const generateFilledRectangle = function(height, width){
+  let currentRectangle = "";
+  let delimitter = "";
+
+  for(let currentHeight = 1; currentHeight <= height; currentHeight ++){
+    currentRectangle += delimitter + generateStarWidth(width); 
+    delimitter = "\n";
+  }
+  return currentRectangle;
+}
+
+/* -------- EMPTY RECTANGLE --------- */
+
+const generateHollowWidth = function(width){
+  let generateLine = ""
+  for(let currentWidth = 1; currentWidth <= width; currentWidth ++){
+    character = " ";
+    if(currentWidth === 1 || currentWidth === width){
+      character = "*";
+    }
+    generateLine += character;
+  }
+  return generateLine;
+}
+
+const generateEmptyRectangle = function(height, width){
+  let currentRectangle = "";
+  let delimitter = "";
+
+  for(let currentHeight = 1; currentHeight <= height; currentHeight ++){
+    currentLine = generateHollowWidth(width);
+    if(currentHeight === 1 || currentHeight === height){
+      currentLine = generateStarWidth(width);
+    }
+    currentRectangle += delimitter + currentLine;
+    delimitter = "\n";
+  }
+  return currentRectangle;
+}
+
+/* --------- ALTERNATING RECTANGLE ---------- */
+
+const generateDashWidth = function(width){
+  generateDash = "";
+  for(let currentWidth = 1; currentWidth <= width; currentWidth ++){
+    generateDash += "-";
+  }
+  return generateDash;
+}
+
+const generateAltRectangle = function(height, width){
+  let currentRectangle = "";
+  let currentLine = "";
+  let delimiter = "";
+
+  for(currentHeight = 1; currentHeight <= height; currentHeight ++){
+    currentLine = generateStarWidth(width);
+    if(currentHeight % 2 === 0){
+      currentLine = generateDashWidth(width);
+    }
+    currentRectangle += delimiter + currentLine;
+    delimiter = "\n";
+  }
+  return currentRectangle;
+}
+
+/* ---------- CREATE RECTANGLE --------- */
+const createRectangle = function(rectangleType, inputHeight, inputWidth){
+
+  if(rectangleType === "alternating"){
+   return generateAltRectangle(inputHeight, inputWidth);
+  }
+
+  if(rectangleType === "empty"){
+    return generateEmptyRectangle(inputHeight, inputWidth) ;
+  }
+
+  if(rectangleType === "filled"){
+    return  generateFilledRectangle (inputHeight, inputWidth);
+  }
+}
+
+exports.createRectangle = createRectangle;
+
+/* -------- LEFT ALIGNED TRIANGLE ---------- */
+
+const generateFilledWidth = function(width){
+  let generateWidth = "";
+  for(let currentWidth = 1; currentWidth <= width; currentWidth ++){
+    generateWidth += "*";
+  }
+  return generateWidth;
+}
+
+const leftAlignedTriangle = function(height){
+  let currentTriangle = "";
+  let delimiter = "";
+  for(let currentHeight = 1; currentHeight <= height; currentHeight ++){
+    currentTriangle += delimiter + generateFilledWidth(currentHeight);
+    delimiter = "\n";
+  }
+  return currentTriangle;
+}
+
+/* -------- RIGHT ALIGNED TRIANGLE --------- */
+
+const generateStar = function(starLimit){
+  let starCount = 0;
+  let addStar = "";
+  while(starCount < starLimit){
+    addStar += "*";
+    starCount ++
+  }
+  return addStar;
+}
+
+const generateSpace = function (spaceLimit){
+  let spaceCount = 0;
+  let addSpace = "";
+  while(spaceCount < spaceLimit){
+    addSpace += " ";
+    spaceCount ++
+  }
+  return addSpace;
+}
+
+const rightAlignedTriangle = function(height){
+  let currentTriangle = "";
+  let delimiter = "";
+  let currentLine = "";
+
+  for(let currentHeight = 1; currentHeight <= height; currentHeight ++){
+    currentLine = generateSpace(height - currentHeight) + generateStar(currentHeight); 
+    currentTriangle += delimiter + currentLine;
+    delimiter = "\n";
+  }
+  return currentTriangle;
+}
+/* ------------ CREATE TRIANGLE --------------- */
+const createTriangle = function(triangleType, inputHeight){
+
+  if(triangleType === "left"){
+    return leftAlignedTriangle(inputHeight);
+  }
+
+  if(triangleType === "right"){
+    return rightAlignedTriangle(inputHeight);
+  }
+}
+
+exports.createTriangle = createTriangle;
+
 /* ----------- PRIMARY FUNCTIONS ------------ */
 const generateActualHeight = function(height){ 
   let actualHeight = height;
@@ -206,7 +368,9 @@ const bottomSlashedTriangle = function(){
   return currentTriangle;
 }
 
-/* --------------ASSEMBLE DIAMONDS ---------- */
+/* ----------- CREATE DIAMOND ------------- */
+
+const createDiamond = function(diamondType, diamondHeight){
 
 let filledDiamond = topFilledTriangle() + 
   createMiddleLine() + bottomFilledTriangle();
@@ -217,31 +381,26 @@ let hollowDiamond = topHollowTriangle()
 let angledDiamond = topSlashedTriangle()
   + middleHollowLine() + bottomSlashedTriangle();
 
-if(repeatActualHeight() === 1){
+if(generateActualHeight(diamondHeight) === 1){
   filledDiamond = hollowDiamond = angledDiamond = topBottomLine();
 }
-if(repeatActualHeight() === 3){
+if(generateActualHeight(diamondHeight) === 3){
   hollowDiamond  = angledDiamond = topBottomLine() 
     + middleHollowLine() + topBottomLine();
 }
 
-/* ------------------ MAIN ---------------- */
-
-const main = function(diamondType){
-
   if(diamondType === "filled"){
-    console.log(filledDiamond);
+    return filledDiamond;
   }
+
   if( diamondType === "hollow"){
-    console.log(hollowDiamond);
+    return hollowDiamond;
   }
+
   if(diamondType === "angled"){
-    console.log(angledDiamond);
+    return angledDiamond;
   }
 }
 
-main(process.argv[2]);
-
-
-
+exports.createDiamond = createDiamond;
 
