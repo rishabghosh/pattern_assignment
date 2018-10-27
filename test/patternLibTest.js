@@ -129,6 +129,44 @@ const testTriangle = function(type, height, expected){
 {
   testTriangle("left", 0, "");
   testTriangle("left", 1, "*");
+  testTriangle("left", 2, "*\n**");
   testTriangle("right", 0, "");
   testTriangle("right", 1, "*");
+  testTriangle("right", 2, " *\n**");
 }
+
+/* -------- LEFT TRIANGLE ---------- */
+
+{
+  let expectedOutput = "*\n";
+  expectedOutput += "**\n";
+  expectedOutput += "***\n";
+  expectedOutput += "****\n";
+  expectedOutput += "*****\n";
+  expectedOutput += "******";
+
+  testTriangle("left", 6, expectedOutput);
+}
+
+/* ----------- RIGHT TRIANGLE -------------- */
+
+{
+  let expectedOutput = "  *\n";
+  expectedOutput += " **\n";
+  expectedOutput += "***";
+
+  testTriangle("right", 3, expectedOutput);
+}
+ 
+{
+  let expectedOutput = "     *\n";
+  expectedOutput += "    **\n";
+  expectedOutput += "   ***\n";
+  expectedOutput += "  ****\n";
+  expectedOutput += " *****\n";
+  expectedOutput += "******";
+  
+  testTriangle("right", 6, expectedOutput);
+}
+
+
