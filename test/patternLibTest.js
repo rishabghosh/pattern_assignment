@@ -3,6 +3,7 @@ const patternLib = require('../src/patternLib.js');
 
 const {createRectangle} = patternLib;
 const {createTriangle} = patternLib;
+const {createDiamond} = patternLib;
 
 /* --------- LOGGING --------- */
 
@@ -101,7 +102,7 @@ const testRectangle = function(type, width, height, expected){
   expectedOutput += "-----\n";
   expectedOutput += "*****\n";
   expectedOutput += "-----";
- 
+
   testRectangle("alternating", 5, 4, expectedOutput);
 }
 
@@ -157,7 +158,7 @@ const testTriangle = function(type, height, expected){
 
   testTriangle("right", 3, expectedOutput);
 }
- 
+
 {
   let expectedOutput = "     *\n";
   expectedOutput += "    **\n";
@@ -165,8 +166,132 @@ const testTriangle = function(type, height, expected){
   expectedOutput += "  ****\n";
   expectedOutput += " *****\n";
   expectedOutput += "******";
-  
+
   testTriangle("right", 6, expectedOutput);
 }
 
+/* ------- TEST DIAMOND -------- */
+
+const testDiamond = function(type, height, expected){
+  let actual = createDiamond(type, height);
+  generateLog({type: type, height: height}, expected, actual);
+  assertEq(actual, expected);
+}
+
+/* ---------- DIAMOND EDGE CASES ---------- */
+{
+  testDiamond("filled", 0, "");
+  testDiamond("filled", 1, "*");
+  testDiamond("filled", 2, "*");
+
+  testDiamond("hollow", 0, "");
+  testDiamond("hollow", 1, "*");
+  testDiamond("hollow", 2, "*");
+
+  testDiamond("angled", 0, "");
+  testDiamond("angled", 1, "*");
+  testDiamond("angled", 2, "*");
+}
+
+/* ------------ FILLED DIAMOND ---------- */
+
+{
+  let expectedOutput = " *\n";
+  expectedOutput += "***\n";
+  expectedOutput += " *";
+
+  testDiamond("filled", 3, expectedOutput); 
+}
+
+{
+  let expectedOutput = "  *\n";
+  expectedOutput += " ***\n";
+  expectedOutput += "*****\n";
+  expectedOutput += " ***\n";
+  expectedOutput += "  *";
+
+  testDiamond("filled", 6, expectedOutput);
+}
+
+{
+  let expectedOutput = "    *\n";
+  expectedOutput += "   ***\n";
+  expectedOutput += "  *****\n";
+  expectedOutput += " *******\n";
+  expectedOutput += "*********\n";
+  expectedOutput += " *******\n";
+  expectedOutput += "  *****\n";
+  expectedOutput += "   ***\n";
+  expectedOutput += "    *";
+
+  testDiamond("filled", 9, expectedOutput);
+}
+
+/* ------------ HOLLOW DIAMOND ----------- */
+
+{
+  let expectedOutput = " *\n";
+  expectedOutput += "* *\n";
+  expectedOutput += " *";
+
+  testDiamond("hollow", 3, expectedOutput);
+}
+
+{
+  let expectedOutput = "  *\n";
+  expectedOutput += " * *\n";
+  expectedOutput += "*   *\n";
+  expectedOutput += " * *\n";
+  expectedOutput += "  *";
+
+  testDiamond("hollow", 6, expectedOutput);
+}
+
+{
+  let expectedOutput = "    *\n";
+  expectedOutput += "   * *\n";
+  expectedOutput += "  *   *\n";
+  expectedOutput += " *     *\n";
+  expectedOutput += "*       *\n";
+  expectedOutput += " *     *\n";
+  expectedOutput += "  *   *\n";
+  expectedOutput += "   * *\n";
+  expectedOutput += "    *";
+
+  testDiamond("hollow", 9, expectedOutput);
+}
+
+/* -------- ANGLED DIAMOND --------- */
+
+{
+  let expectedOutput = " *\n";
+  expectedOutput += "* *\n";
+  expectedOutput += " *";
+
+  testDiamond("angled", 3, expectedOutput); 
+}
+
+{
+  let expectedOutput = "  *\n";
+  expectedOutput += " / \\\n";
+  expectedOutput += "*   *\n";
+  expectedOutput += " \\ /\n";
+  expectedOutput += "  *";
+
+  testDiamond("angled", 6, expectedOutput);
+}
+
+{
+  let expectedOutput = "    *\n";
+  expectedOutput += "   / \\\n";
+  expectedOutput += "  /   \\\n";
+  expectedOutput += " /     \\\n";
+  expectedOutput += "*       *\n";
+  expectedOutput += " \\     /\n";
+  expectedOutput += "  \\   /\n";
+  expectedOutput += "   \\ /\n";
+  expectedOutput += "    *";
+
+  testDiamond("angled", 9, expectedOutput);
+}
 

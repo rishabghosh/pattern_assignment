@@ -358,9 +358,9 @@ if(generateActualHeight(diamondHeight) === 3){
     + middleHollowLine(diamondHeight) + topBottomLine(diamondHeight);
 }
 
-//if(diamondHeight === 0){
-//  filledDiamond = hollowDiamond = angledDiamond = "";
-//}
+if(diamondHeight === 0){
+  filledDiamond = hollowDiamond = angledDiamond = "";
+}
 
   if(diamondType === "filled"){
     return filledDiamond;
