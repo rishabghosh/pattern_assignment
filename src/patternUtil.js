@@ -28,12 +28,13 @@ const generateSpace = function (spaceLimit){
 
 const generateHollowWidth = function(width){
   if(width < 2){
-    return "*";
+    return generateStar(width); 
   }
   return "*" + generateSpace(width-2) + "*";
 }
 
 const generateActualHeight = function(height){ 
+  if(height < 1){return 0};
   if(height % 2 === 0){
   return height - 1;
   }
@@ -45,21 +46,18 @@ const heightOfTriangle = function(diamondHeight){
 }
 
 const trianglesMaxLength = function(diamondHeight){
-  let counter = 1;
-  let maxTriangleLength = 1;
-  while(counter < heightOfTriangle(diamondHeight)){
-    maxTriangleLength += 2;
-    counter ++;
-  }
-  return maxTriangleLength;
+  if(diamondHeight < 3){return 0}
+  return generateActualHeight(diamondHeight) - 2;
 }
 
 const createSlashedStructure = function(leftSide, rightSide, width){
+  if(width < 2){return ""};
   return leftSide + generateSpace(width-2) + rightSide;
 }
 
 const topBottomLine = function(diamondHeight){
   let trianglesHeight = heightOfTriangle(diamondHeight);
+  if(diamondHeight < 1){return ""};
   return generateSpace(trianglesHeight) + "*";
 }
 
