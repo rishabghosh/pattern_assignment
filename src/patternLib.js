@@ -250,7 +250,7 @@ const createDiamond = function(diamondType, diamondHeight){
       + middleHollowLine(diamondHeight) + topBottomLine(diamondHeight);
   }
 
-  if(diamondHeight === 0){
+  if(diamondHeight < 1){
     filledDiamond = hollowDiamond = angledDiamond = "";
   }
 
