@@ -27,6 +27,9 @@ const generateSpace = function (spaceLimit){
 }
 
 const generateHollowWidth = function(width){
+  if(width < 2){
+    return "*";
+  }
   return "*" + generateSpace(width-2) + "*";
 }
 
