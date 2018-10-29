@@ -1,15 +1,3 @@
-const generateHollowWidth = function(width){
-  let generateLine = ""
-  for(let currentWidth = 1; currentWidth <= width; currentWidth ++){
-    character = " ";
-    if(currentWidth === 1 || currentWidth === width){
-      character = "*";
-    }
-    generateLine += character;
-  }
-  return generateLine;
-}
-
 const generateDashWidth = function(width){
   generateDash = "";
   for(let currentWidth = 1; currentWidth <= width; currentWidth ++){
@@ -38,6 +26,10 @@ const generateSpace = function (spaceLimit){
   return addSpace;
 }
 
+const generateHollowWidth = function(width){
+  return "*" + generateSpace(width-2) + "*";
+}
+
 const generateActualHeight = function(height){ 
   if(height % 2 === 0){
   return height - 1;
@@ -60,22 +52,7 @@ const trianglesMaxLength = function(diamondHeight){
 }
 
 const createSlashedStructure = function(leftSide, rightSide, width){
-  let createLine = "";
-  let character = "";
-
-  for(currentWidth = 1; currentWidth <= width; currentWidth ++){
-    character = " ";
-
-    if(currentWidth === 1){
-      character = leftSide;
-    }
-    if(currentWidth === width){
-      character = rightSide;
-    }
-
-    createLine += character;
-  }
-  return createLine;
+  return leftSide + generateSpace(width-2) + rightSide;
 }
 
 const topBottomLine = function(diamondHeight){
