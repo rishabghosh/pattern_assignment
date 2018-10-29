@@ -1,11 +1,3 @@
-const generateStarWidth = function(width){
-  let generateLine = "";
-  for(let currentWidth = 1; currentWidth <= width; currentWidth ++){
-    generateLine += "*";
-  }
-  return generateLine;
-}
-
 const generateHollowWidth = function(width){
   let generateLine = ""
   for(let currentWidth = 1; currentWidth <= width; currentWidth ++){
@@ -47,11 +39,10 @@ const generateSpace = function (spaceLimit){
 }
 
 const generateActualHeight = function(height){ 
-  let actualHeight = height;
   if(height % 2 === 0){
-    actualHeight = height -1;
+  return height - 1;
   }
-  return actualHeight;
+  return height;
 }
 
 const heightOfTriangle = function(diamondHeight){
@@ -66,18 +57,6 @@ const trianglesMaxLength = function(diamondHeight){
     counter ++;
   }
   return maxTriangleLength;
-}
-
-const createHollowWidth = function(width){
-  let createLine = ""
-  for(currentWidth = 1; currentWidth <= width; currentWidth ++){
-    character = " ";
-    if(currentWidth === 1 || currentWidth === width){
-      character = "*";
-    }
-    createLine += character;
-  }
-  return createLine;
 }
 
 const createSlashedStructure = function(leftSide, rightSide, width){
@@ -100,26 +79,12 @@ const createSlashedStructure = function(leftSide, rightSide, width){
 }
 
 const topBottomLine = function(diamondHeight){
-  let currentLine = "";
   let trianglesHeight = heightOfTriangle(diamondHeight);
-  for(let currentWidth = 1; currentWidth < trianglesHeight + 1; currentWidth ++){
-    currentLine += " ";
-  }
-  currentLine += "*";
-  return currentLine;
+  return generateSpace(trianglesHeight) + "*";
 }
 
+/* ----------- EXPORTS ------------ */
 
-
-
-
-
-
-
-
-
-
-exports.generateStarWidth = generateStarWidth;
 exports.generateHollowWidth = generateHollowWidth;
 exports.generateDashWidth = generateDashWidth;
 exports.generateStar = generateStar;
@@ -127,6 +92,5 @@ exports.generateSpace = generateSpace;
 exports.generateActualHeight = generateActualHeight;
 exports.heightOfTriangle = heightOfTriangle;
 exports.trianglesMaxLength = trianglesMaxLength;
-exports.createHollowWidth = createHollowWidth;
 exports.createSlashedStructure = createSlashedStructure;
 exports.topBottomLine = topBottomLine;
