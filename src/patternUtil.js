@@ -58,7 +58,7 @@ const createSlashedStructure = function(leftSide, rightSide, width){
 const topBottomLine = function(diamondHeight){
   let trianglesHeight = heightOfTriangle(diamondHeight);
   if(diamondHeight < 1){return ""};
-  return generateSpace(trianglesHeight) + "*";
+  return generateSpace(trianglesHeight) + "*" + generateSpace(trianglesHeight);
 }
 
 /* ----------- EXPORTS ------------ */

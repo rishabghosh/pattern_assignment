@@ -197,33 +197,36 @@ const testDiamond = function(type, height, expected){
 /* ------------ FILLED DIAMOND ---------- */
 
 {
-  let expectedOutput = " *\n";
+  let expectedOutput = "";
+  expectedOutput += " * \n";
   expectedOutput += "***\n";
-  expectedOutput += " *";
+  expectedOutput += " * ";
 
   testDiamond("filled", 3, expectedOutput); 
 }
 
 {
-  let expectedOutput = "  *\n";
-  expectedOutput += " ***\n";
+  let expectedOutput = "";
+  expectedOutput += "  *  \n";
+  expectedOutput += " *** \n";
   expectedOutput += "*****\n";
-  expectedOutput += " ***\n";
-  expectedOutput += "  *";
+  expectedOutput += " *** \n";
+  expectedOutput += "  *  ";
 
   testDiamond("filled", 6, expectedOutput);
 }
 
 {
-  let expectedOutput = "    *\n";
-  expectedOutput += "   ***\n";
-  expectedOutput += "  *****\n";
-  expectedOutput += " *******\n";
+  let expectedOutput = "";
+  expectedOutput += "    *    \n";
+  expectedOutput += "   ***   \n";
+  expectedOutput += "  *****  \n";
+  expectedOutput += " ******* \n";
   expectedOutput += "*********\n";
-  expectedOutput += " *******\n";
-  expectedOutput += "  *****\n";
-  expectedOutput += "   ***\n";
-  expectedOutput += "    *";
+  expectedOutput += " ******* \n";
+  expectedOutput += "  *****  \n";
+  expectedOutput += "   ***   \n";
+  expectedOutput += "    *    ";
 
   testDiamond("filled", 9, expectedOutput);
 }
@@ -231,33 +234,36 @@ const testDiamond = function(type, height, expected){
 /* ------------ HOLLOW DIAMOND ----------- */
 
 {
-  let expectedOutput = " *\n";
+  let expectedOutput = "";
+  expectedOutput += " * \n";
   expectedOutput += "* *\n";
-  expectedOutput += " *";
+  expectedOutput += " * ";
 
   testDiamond("hollow", 3, expectedOutput);
 }
 
 {
-  let expectedOutput = "  *\n";
-  expectedOutput += " * *\n";
+  let expectedOutput = "";
+  expectedOutput += "  *  \n";
+  expectedOutput += " * * \n";
   expectedOutput += "*   *\n";
-  expectedOutput += " * *\n";
-  expectedOutput += "  *";
+  expectedOutput += " * * \n";
+  expectedOutput += "  *  ";
 
   testDiamond("hollow", 6, expectedOutput);
 }
 
 {
-  let expectedOutput = "    *\n";
-  expectedOutput += "   * *\n";
-  expectedOutput += "  *   *\n";
-  expectedOutput += " *     *\n";
+  let expectedOutput = "";
+  expectedOutput += "    *    \n";
+  expectedOutput += "   * *   \n";
+  expectedOutput += "  *   *  \n";
+  expectedOutput += " *     * \n";
   expectedOutput += "*       *\n";
-  expectedOutput += " *     *\n";
-  expectedOutput += "  *   *\n";
-  expectedOutput += "   * *\n";
-  expectedOutput += "    *";
+  expectedOutput += " *     * \n";
+  expectedOutput += "  *   *  \n";
+  expectedOutput += "   * *   \n";
+  expectedOutput += "    *    ";
 
   testDiamond("hollow", 9, expectedOutput);
 }
@@ -265,33 +271,36 @@ const testDiamond = function(type, height, expected){
 /* -------- ANGLED DIAMOND --------- */
 
 {
-  let expectedOutput = " *\n";
+  let expectedOutput = "";
+  expectedOutput += " * \n";
   expectedOutput += "* *\n";
-  expectedOutput += " *";
+  expectedOutput += " * ";
 
   testDiamond("angled", 3, expectedOutput); 
 }
 
 {
-  let expectedOutput = "  *\n";
-  expectedOutput += " / \\\n";
+  let expectedOutput = "";
+  expectedOutput += "  *  \n";
+  expectedOutput += " / \\ \n";
   expectedOutput += "*   *\n";
-  expectedOutput += " \\ /\n";
-  expectedOutput += "  *";
+  expectedOutput += " \\ / \n";
+  expectedOutput += "  *  ";
 
   testDiamond("angled", 6, expectedOutput);
 }
 
 {
-  let expectedOutput = "    *\n";
-  expectedOutput += "   / \\\n";
-  expectedOutput += "  /   \\\n";
-  expectedOutput += " /     \\\n";
+  let expectedOutput = "";
+  expectedOutput += "    *    \n";
+  expectedOutput += "   / \\   \n";
+  expectedOutput += "  /   \\  \n";
+  expectedOutput += " /     \\ \n";
   expectedOutput += "*       *\n";
-  expectedOutput += " \\     /\n";
-  expectedOutput += "  \\   /\n";
-  expectedOutput += "   \\ /\n";
-  expectedOutput += "    *";
+  expectedOutput += " \\     / \n";
+  expectedOutput += "  \\   /  \n";
+  expectedOutput += "   \\ /   \n";
+  expectedOutput += "    *    ";
 
   testDiamond("angled", 9, expectedOutput);
 }

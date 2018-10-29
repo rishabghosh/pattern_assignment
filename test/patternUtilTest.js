@@ -150,8 +150,8 @@ testTopBottomLine(-1, "");
 testTopBottomLine(0, "");
 testTopBottomLine(1, "*");
 testTopBottomLine(2, "*");
-testTopBottomLine(3, " *");
-testTopBottomLine(4, " *");
-testTopBottomLine(5, "  *");
+testTopBottomLine(3, " * ");
+testTopBottomLine(4, " * ");
+testTopBottomLine(5, "  *  ");
 
 
