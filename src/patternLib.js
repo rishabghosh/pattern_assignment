@@ -80,7 +80,9 @@ const leftAlignedTriangle = function(height){
   let currentTriangle = "";
   let delimiter = "";
   for(let currentHeight = 1; currentHeight <= height; currentHeight ++){
-    currentTriangle += delimiter + generateStar(currentHeight);
+    currentTriangle += delimiter + generateStar(currentHeight)
+      + generateSpace(height - currentHeight);
+
     delimiter = "\n";
   }
   return currentTriangle;
