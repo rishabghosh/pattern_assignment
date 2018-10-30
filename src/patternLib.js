@@ -126,8 +126,8 @@ const topFilledTriangle = function(diamondHeight){
   let delimiter = "";
   let counter = 0;
 
-  for(let currentLength = 1; currentLength <= trLen; currentLength += 2){
-    currentLine = generateSpace(spaceLen - counter +1)+ generateStar(currentLength)
+  for(let length = 1; length <= trLen; length += 2){
+    currentLine = generateSpace(spaceLen - counter +1)+ generateStar(length)
       + generateSpace(spaceLen - counter +1);
 
     currentTriangle += delimiter + currentLine;
@@ -150,8 +150,8 @@ const bottomFilledTriangle = function(diamondHeight){
   let delimiter = "";
   let counter = 1;
 
-  for(let currentLength = trLen; currentLength >= 1; currentLength -= 2){
-    currentLine = generateSpace(counter) + generateStar(currentLength)
+  for(let length = trLen; length >= 1; length -= 2){
+    currentLine = generateSpace(counter) + generateStar(length)
       + generateSpace(counter) ;
     currentTriangle += delimiter + currentLine;
     delimiter = "\n";
@@ -167,10 +167,10 @@ const topHollowTriangle = function(diamondHeight){
   let currentTriangle = topBottomLine(diamondHeight);
   let counter = heightOfTriangle(diamondHeight) - 1;
 
-  for(let currentLength = 3; currentLength < generateActualHeight(diamondHeight); currentLength += 2){
+  for(let length = 3; length < generateActualHeight(diamondHeight); length += 2){
 
     currentTriangle += delimiter + generateSpace(counter) 
-      + generateHollowWidth(currentLength) + generateSpace(counter);
+      + generateHollowWidth(length) + generateSpace(counter);
 
     counter --;
   }
@@ -188,10 +188,10 @@ const bottomHollowTriangle = function(diamondHeight){
   let currentTriangle = "";
   let counter = 1;
 
-  for(let currentLength = generateActualHeight(diamondHeight); currentLength > 3; currentLength -= 2){
+  for(let length = generateActualHeight(diamondHeight); length > 3; length -= 2){
 
     currentTriangle += delimiter + generateSpace(counter) 
-      + generateHollowWidth(currentLength -2) + generateSpace(counter);
+      + generateHollowWidth(length -2) + generateSpace(counter);
 
     delimiter = "\n";
     counter ++;
@@ -207,10 +207,9 @@ const topSlashedTriangle = function(diamondHeight){
   let currentTriangle = topBottomLine(diamondHeight);
   let counter = heightOfTriangle(diamondHeight) - 1;
 
-  for(let currentLength = 3; currentLength < generateActualHeight(diamondHeight); currentLength += 2){
-
+  for(let length = 3; length < generateActualHeight(diamondHeight); length += 2){
     currentTriangle += delimiter + generateSpace(counter) 
-      + createSlashedStructure("/", "\\", currentLength) + generateSpace(counter);
+      + createSlashedStructure("/", "\\", length) + generateSpace(counter);
 
     counter --;
   }
@@ -222,10 +221,9 @@ const bottomSlashedTriangle = function(diamondHeight){
   let currentTriangle = "";
   let counter = 1;
 
-  for(let currentLength = generateActualHeight(diamondHeight); currentLength > 3; currentLength -= 2){
-
+  for(let length = generateActualHeight(diamondHeight); length > 3; length -= 2){
     currentTriangle += delimiter + generateSpace(counter) + 
-      createSlashedStructure("\\", "/", currentLength -2) + generateSpace(counter);
+      createSlashedStructure("\\", "/", length -2) + generateSpace(counter);
 
     delimiter = "\n";
     counter ++;

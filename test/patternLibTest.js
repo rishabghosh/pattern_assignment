@@ -50,7 +50,9 @@ const testRectangle = function(type, width, height, expected){
 /* -------- FILLED RECTANGLE ---------- */
 
 {
-  let expectedOutput = "*****\n";
+  let expectedOutput = "";
+
+  expectedOutput += "*****\n";
   expectedOutput += "*****\n";
   expectedOutput += "*****\n";
   expectedOutput += "*****\n";
@@ -60,7 +62,9 @@ const testRectangle = function(type, width, height, expected){
 }
 
 {
-  let expectedOutput = "********************\n";
+  let expectedOutput = "";
+
+  expectedOutput += "********************\n";
   expectedOutput += "********************\n";
   expectedOutput += "********************\n";
   expectedOutput += "********************\n";
@@ -74,7 +78,9 @@ const testRectangle = function(type, width, height, expected){
 /* ------------ EMPTY RECTANGLE ------------- */
 
 {
-  let expectedOutput = "*****\n";
+  let expectedOutput = "";
+
+  expectedOutput += "*****\n";
   expectedOutput += "*   *\n";
   expectedOutput += "*   *\n";
   expectedOutput += "*   *\n";
@@ -84,7 +90,9 @@ const testRectangle = function(type, width, height, expected){
 }
 
 {
-  let expectedOutput = "********************\n";
+  let expectedOutput = "";
+
+  expectedOutput += "********************\n";
   expectedOutput += "*                  *\n";
   expectedOutput += "*                  *\n";
   expectedOutput += "*                  *\n";
@@ -98,7 +106,9 @@ const testRectangle = function(type, width, height, expected){
 /* --------- ALTERNATING RECTANGLE ---------- */
 
 {
-  let expectedOutput = "*****\n";
+  let expectedOutput = "";
+
+  expectedOutput += "*****\n";
   expectedOutput += "-----\n";
   expectedOutput += "*****\n";
   expectedOutput += "-----";
@@ -107,7 +117,9 @@ const testRectangle = function(type, width, height, expected){
 }
 
 {
-  let expectedOutput = "********************\n";
+  let expectedOutput = "";
+
+  expectedOutput += "********************\n";
   expectedOutput += "--------------------\n";
   expectedOutput += "********************\n";
   expectedOutput += "--------------------\n";
@@ -153,7 +165,9 @@ const testTriangle = function(type, height, expected){
 /* ----------- RIGHT TRIANGLE -------------- */
 
 {
-  let expectedOutput = "  *\n";
+  let expectedOutput = "";
+
+  expectedOutput += "  *\n";
   expectedOutput += " **\n";
   expectedOutput += "***";
 
@@ -161,7 +175,9 @@ const testTriangle = function(type, height, expected){
 }
 
 {
-  let expectedOutput = "     *\n";
+  let expectedOutput = "";
+
+  expectedOutput += "     *\n";
   expectedOutput += "    **\n";
   expectedOutput += "   ***\n";
   expectedOutput += "  ****\n";
