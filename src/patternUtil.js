@@ -61,6 +61,15 @@ const topBottomLine = function(diamondHeight){
   return generateSpace(trianglesHeight) + "*" + generateSpace(trianglesHeight);
 }
 
+const extractInputs = function(listOfInput){
+  let type = listOfInput[2];
+  let width = +listOfInput[3];
+
+  let index = (listOfInput.length === 5? 4:3);
+  let height = +listOfInput[index];
+  return {type, height, width};
+}
+
 /* ----------- EXPORTS ------------ */
 
 exports.generateHollowWidth = generateHollowWidth;
@@ -72,3 +81,4 @@ exports.heightOfTriangle = heightOfTriangle;
 exports.trianglesMaxLength = trianglesMaxLength;
 exports.createSlashedStructure = createSlashedStructure;
 exports.topBottomLine = topBottomLine;
+exports.extractInputs = extractInputs;

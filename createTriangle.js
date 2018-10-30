@@ -1,9 +1,9 @@
 const {createTriangle} = require('./src/patternLib.js');
+const {extractInputs} = require('./src/patternUtil.js');
 
 const main = function(){
-  const triangleType = process.argv[2];
-  const inputHeight = +process.argv[3];
-  console.log( createTriangle(triangleType, inputHeight) );
+  const {type, height} = extractInputs(process.argv);
+  console.log( createTriangle(type, height) );
 }
 
 main();
