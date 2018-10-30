@@ -1,11 +1,11 @@
-filled|7|20
+filled|20|7
 filled|5|5
 filled|2|2
-filled|3|2
+filled|2|3
 empty|5|5
-empty|7|20
+empty|20|7
 empty|2|2
 alternating|2|2
 alternating|5|5
-alternating|7|20
+alternating|20|7
 alternating|3|3
