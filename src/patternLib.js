@@ -1,4 +1,8 @@
-const {generateHollowWidth,
+const {createDash,
+  createStar,
+  createSpace,
+  generateLine,
+  generateHollowWidth,
   generateDashWidth,
   generateStar,
   generateSpace,
@@ -12,49 +16,49 @@ const {generateHollowWidth,
 /* -------- FILLED RECTANGLE -------- */
 
 const generateFilledRectangle = function(height, width){
-  let currentRectangle = "";
+  let currRectangle = "";
   let delimitter = "";
 
-  for(let currentHeight = 1; currentHeight <= height; currentHeight ++){
-    currentRectangle += delimitter + generateStar(width); 
+  for(let currHeight = 1; currHeight <= height; currHeight ++){
+    currRectangle += delimitter + generateLine(createStar, width); 
     delimitter = "\n";
   }
-  return currentRectangle;
+  return currRectangle;
 }
 
 /* -------- EMPTY RECTANGLE --------- */
 
 const generateEmptyRectangle = function(height, width){
-  let currentRectangle = "";
+  let currRectangle = "";
   let delimitter = "";
 
-  for(let currentHeight = 1; currentHeight <= height; currentHeight ++){
-    currentLine = generateHollowWidth(width);
-    if(currentHeight === 1 || currentHeight === height){
-      currentLine = generateStar(width);
+  for(let currHeight = 1; currHeight <= height; currHeight ++){
+    currLine = generateHollowWidth(width);
+    if(currHeight === 1 || currHeight === height){
+      currLine = generateLine(createStar,width);
     }
-    currentRectangle += delimitter + currentLine;
+    currRectangle += delimitter + currLine;
     delimitter = "\n";
   }
-  return currentRectangle;
+  return currRectangle;
 }
 
 /* --------- ALTERNATING RECTANGLE ---------- */
 
 const generateAltRectangle = function(height, width){
-  let currentRectangle = "";
-  let currentLine = "";
+  let currRectangle = "";
+  let currLine = "";
   let delimiter = "";
 
-  for(currentHeight = 1; currentHeight <= height; currentHeight ++){
-    currentLine = generateStar(width);
-    if(currentHeight % 2 === 0){
-      currentLine = generateDashWidth(width);
+  for(currHeight = 1; currHeight <= height; currHeight ++){
+    currLine = generateLine(createStar,width);
+    if(currHeight % 2 === 0){
+      currLine = generateLine(createDash, width);
     }
-    currentRectangle += delimiter + currentLine;
+    currRectangle += delimiter + currLine;
     delimiter = "\n";
   }
-  return currentRectangle;
+  return currRectangle;
 }
 
 /* ---------- CREATE RECTANGLE --------- */
@@ -77,30 +81,31 @@ const createRectangle = function(rectangleType, inputWidth, inputHeight){
 /* -------- LEFT ALIGNED TRIANGLE ---------- */
 
 const leftAlignedTriangle = function(height){
-  let currentTriangle = "";
+  let currTriangle = "";
   let delimiter = "";
-  for(let currentHeight = 1; currentHeight <= height; currentHeight ++){
-    currentTriangle += delimiter + generateStar(currentHeight)
-      + generateSpace(height - currentHeight);
+  for(let currHeight = 1; currHeight <= height; currHeight ++){
+    currTriangle += delimiter + generateLine(createStar, currHeight)
+      + generateLine(createSpace, height - currHeight);
 
     delimiter = "\n";
   }
-  return currentTriangle;
+  return currTriangle;
 }
 
 /* -------- RIGHT ALIGNED TRIANGLE --------- */
 
 const rightAlignedTriangle = function(height){
-  let currentTriangle = "";
+  let currTriangle = "";
   let delimiter = "";
-  let currentLine = "";
+  let currLine = "";
 
-  for(let currentHeight = 1; currentHeight <= height; currentHeight ++){
-    currentLine = generateSpace(height - currentHeight) + generateStar(currentHeight); 
-    currentTriangle += delimiter + currentLine;
+  for(let currHeight = 1; currHeight <= height; currHeight ++){
+    currLine = generateLine(createSpace, height - currHeight)
+      + generateLine(createStar, currHeight); 
+    currTriangle += delimiter + currLine;
     delimiter = "\n";
   }
-  return currentTriangle;
+  return currTriangle;
 }
 
 /* ------------ CREATE TRIANGLE --------------- */
@@ -119,62 +124,63 @@ const createTriangle = function(triangleType, inputHeight){
 /* ------------- FILLED DAIMOND ------------ */
 
 const topFilledTriangle = function(diamondHeight){
-  let currentLine = "";
+  let currLine = "";
   let trLen = trianglesMaxLength(diamondHeight);
   let spaceLen = Math.floor(trLen / 2);
-  let currentTriangle = "";
+  let currTriangle = "";
   let delimiter = "";
   let counter = 0;
 
   for(let length = 1; length <= trLen; length += 2){
-    currentLine = generateSpace(spaceLen - counter +1)+ generateStar(length)
-      + generateSpace(spaceLen - counter +1);
+    currLine = generateLine(createSpace, spaceLen - counter +1)
+      + generateLine(createStar, length)
+      + generateLine(createSpace,spaceLen - counter +1);
 
-    currentTriangle += delimiter + currentLine;
+    currTriangle += delimiter + currLine;
     delimiter = "\n";
     counter ++;
   }
-  return currentTriangle;
+  return currTriangle;
 }
 
 const createMiddleLine = function(diamondHeight){
   let lineLength = trianglesMaxLength(diamondHeight) + 2;
-  return "\n" + generateStar(lineLength) + "\n"; 
+  return "\n" + generateLine(createStar, lineLength) + "\n"; 
 }
 
 const bottomFilledTriangle = function(diamondHeight){
-  let currentLine = "";
+  let currLine = "";
   let trLen = trianglesMaxLength(diamondHeight);
   let spaceLen = Math.floor(trLen / 2);
-  let currentTriangle = "";
+  let currTriangle = "";
   let delimiter = "";
   let counter = 1;
 
   for(let length = trLen; length >= 1; length -= 2){
-    currentLine = generateSpace(counter) + generateStar(length)
-      + generateSpace(counter) ;
-    currentTriangle += delimiter + currentLine;
+    currLine = generateLine(createSpace,counter) + generateLine(createStar,length)
+      + generateLine(createSpace,counter) ;
+    currTriangle += delimiter + currLine;
     delimiter = "\n";
     counter ++;
   }
-  return currentTriangle;
+  return currTriangle;
 }
 
 /* ------------ HOLLOW DAIMOND ------------- */
 
 const topHollowTriangle = function(diamondHeight){
   let delimiter = "\n";
-  let currentTriangle = topBottomLine(diamondHeight);
+  let currTriangle = topBottomLine(diamondHeight);
   let counter = heightOfTriangle(diamondHeight) - 1;
 
   for(let length = 3; length < generateActualHeight(diamondHeight); length += 2){
 
-    currentTriangle += delimiter + generateSpace(counter) 
-      + generateHollowWidth(length) + generateSpace(counter);
+    currTriangle += delimiter + generateLine(createSpace,counter) 
+      + generateHollowWidth(length) + generateLine(createSpace,counter);
 
     counter --;
   }
-  return currentTriangle;
+  return currTriangle;
 }
 
 const middleHollowLine = function(diamondHeight){
@@ -185,51 +191,51 @@ const middleHollowLine = function(diamondHeight){
 
 const bottomHollowTriangle = function(diamondHeight){
   let delimiter = "";
-  let currentTriangle = "";
+  let currTriangle = "";
   let counter = 1;
 
   for(let length = generateActualHeight(diamondHeight); length > 3; length -= 2){
 
-    currentTriangle += delimiter + generateSpace(counter) 
-      + generateHollowWidth(length -2) + generateSpace(counter);
+    currTriangle += delimiter + generateLine(createSpace,counter) 
+      + generateHollowWidth(length -2) + generateLine(createSpace,counter);
 
     delimiter = "\n";
     counter ++;
   }
-  currentTriangle += "\n" + topBottomLine(diamondHeight);
-  return currentTriangle;
+  currTriangle += "\n" + topBottomLine(diamondHeight);
+  return currTriangle;
 }
 
 /* -------- ANGLED HOLLOW DAIMOND ---------- */
 
 const topSlashedTriangle = function(diamondHeight){
   let delimiter = "\n";
-  let currentTriangle = topBottomLine(diamondHeight);
+  let currTriangle = topBottomLine(diamondHeight);
   let counter = heightOfTriangle(diamondHeight) - 1;
 
   for(let length = 3; length < generateActualHeight(diamondHeight); length += 2){
-    currentTriangle += delimiter + generateSpace(counter) 
-      + createSlashedStructure("/", "\\", length) + generateSpace(counter);
+    currTriangle += delimiter + generateLine(createSpace,counter) 
+      + createSlashedStructure("/", "\\", length) + generateLine(createSpace,counter);
 
     counter --;
   }
-  return currentTriangle;
+  return currTriangle;
 }
 
 const bottomSlashedTriangle = function(diamondHeight){
   let delimiter = "";
-  let currentTriangle = "";
+  let currTriangle = "";
   let counter = 1;
 
   for(let length = generateActualHeight(diamondHeight); length > 3; length -= 2){
-    currentTriangle += delimiter + generateSpace(counter) + 
-      createSlashedStructure("\\", "/", length -2) + generateSpace(counter);
+    currTriangle += delimiter + generateLine(createSpace,counter) + 
+      createSlashedStructure("\\", "/", length -2) + generateLine(createSpace,counter);
 
     delimiter = "\n";
     counter ++;
   }
-  currentTriangle += "\n" + topBottomLine(diamondHeight);
-  return currentTriangle;
+  currTriangle += "\n" + topBottomLine(diamondHeight);
+  return currTriangle;
 }
 
 /* ----------- CREATE DIAMOND ------------- */
