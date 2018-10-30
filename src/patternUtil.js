@@ -38,7 +38,7 @@ const generateSpace = function (spaceLimit){
   return addSpace;
 }
 
-const generateHollowWidth = function(width){
+const createHollowLine = function(width){
   if(width < 2){
     return generateLine(createStar,width); 
   }
@@ -84,7 +84,7 @@ const extractInputs = function(listOfInput){
 
 /* ----------- EXPORTS ------------ */
 
-exports.generateHollowWidth = generateHollowWidth;
+exports.createHollowLine = createHollowLine;
 exports.generateDashWidth = generateDashWidth;
 exports.generateStar = generateStar;
 exports.generateSpace = generateSpace;

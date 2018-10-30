@@ -3,7 +3,7 @@ const {createDash,
   createStar,
   createSpace,
   generateLine,
-  generateHollowWidth,
+  createHollowLine,
   generateDashWidth,
   generateStar,
   generateSpace,
@@ -67,7 +67,7 @@ testGenerateSpace(3, "   ");
 /* ------ TEST GENERATE HOLLOW WIDTH -------- */
 
 const testGenerateHollowWidth = function(width, expected){
-  let actual = generateHollowWidth(width);
+  let actual = createHollowLine(width);
   generateLog({width: width}, expected, actual);
   assertEq(actual, expected);
 }

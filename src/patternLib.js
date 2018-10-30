@@ -2,10 +2,7 @@ const {createDash,
   createStar,
   createSpace,
   generateLine,
-  generateHollowWidth,
-  generateDashWidth,
-  generateStar,
-  generateSpace,
+  createHollowLine,
   generateActualHeight,
   heightOfTriangle,
   createSlashedStructure,
@@ -33,7 +30,7 @@ const generateEmptyRectangle = function(height, width){
   let delimitter = "";
 
   for(let currHeight = 1; currHeight <= height; currHeight ++){
-    currLine = generateHollowWidth(width);
+    currLine = createHollowLine(width);
     if(currHeight === 1 || currHeight === height){
       currLine = generateLine(createStar,width);
     }
@@ -176,7 +173,7 @@ const topHollowTriangle = function(diamondHeight){
   for(let length = 3; length < generateActualHeight(diamondHeight); length += 2){
 
     currTriangle += delimiter + generateLine(createSpace,counter) 
-      + generateHollowWidth(length) + generateLine(createSpace,counter);
+      + createHollowLine(length) + generateLine(createSpace,counter);
 
     counter --;
   }
@@ -184,7 +181,7 @@ const topHollowTriangle = function(diamondHeight){
 }
 
 const middleHollowLine = function(diamondHeight){
-  let createdLine = generateHollowWidth(trianglesMaxLength(diamondHeight) +2);
+  let createdLine = createHollowLine(trianglesMaxLength(diamondHeight) +2);
   createdLine = "\n" + createdLine + "\n";
   return createdLine;
 }
@@ -197,7 +194,7 @@ const bottomHollowTriangle = function(diamondHeight){
   for(let length = generateActualHeight(diamondHeight); length > 3; length -= 2){
 
     currTriangle += delimiter + generateLine(createSpace,counter) 
-      + generateHollowWidth(length -2) + generateLine(createSpace,counter);
+      + createHollowLine(length -2) + generateLine(createSpace,counter);
 
     delimiter = "\n";
     counter ++;
