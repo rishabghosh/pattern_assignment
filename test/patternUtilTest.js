@@ -1,5 +1,9 @@
 const assertEq = require('assert').equal;
-const {generateHollowWidth,
+const {createDash,
+  createStar,
+  createSpace,
+  generateLine,
+  generateHollowWidth,
   generateDashWidth,
   generateStar,
   generateSpace,
@@ -154,4 +158,26 @@ testTopBottomLine(3, " * ");
 testTopBottomLine(4, " * ");
 testTopBottomLine(5, "  *  ");
 
+/* ------ Test Atomic Functions ------- */
 
+assertEq(createDash(), "-");
+assertEq(createStar(), "*");
+assertEq(createSpace(), " ");
+
+/* ------ Test generateLine ------- */
+
+const testGenerateLine = function(internalFunc, length, expected){
+  let actual = generateLine(internalFunc, length);
+  generateLog({internalFunc, length}, expected, actual);
+  assertEq(actual, expected);
+}
+
+testGenerateLine( createSpace, -1, "");
+testGenerateLine( createStar, 0, "");
+testGenerateLine( createStar, 1, "*");
+testGenerateLine( createStar, 2, "**");
+testGenerateLine( createDash, 1, "-");
+testGenerateLine( createDash, 2, "--");
+testGenerateLine( createSpace, 0, "");
+testGenerateLine( createSpace, 1, " ");
+testGenerateLine( createSpace, 2, "  ");

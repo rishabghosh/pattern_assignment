@@ -1,3 +1,15 @@
+const createDash = function(){ return "-" } 
+const createStar = function(){ return "*" } 
+const createSpace = function(){ return " " }
+
+const generateLine = function(internalFunc, length){
+  let currLine = "";
+  for( let currLen = 0; currLen < length; currLen ++){
+    currLine += internalFunc();
+  }
+  return currLine;
+}
+
 const generateDashWidth = function(width){
   generateDash = "";
   for(let currentWidth = 1; currentWidth <= width; currentWidth ++){
@@ -82,3 +94,8 @@ exports.trianglesMaxLength = trianglesMaxLength;
 exports.createSlashedStructure = createSlashedStructure;
 exports.topBottomLine = topBottomLine;
 exports.extractInputs = extractInputs;
+
+exports.createDash = createDash;
+exports.createStar = createStar;
+exports.createSpace = createSpace;
+exports.generateLine = generateLine;
