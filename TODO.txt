@@ -1,0 +1,16 @@
+modify the if's to make code look better on patternLib
+convert strings to array
+patternLib should be more clean
+ - variable names, function name should be modified
+
+--------------------
+
+change patternLibTest [ and patternUtilTest ]
+
+then change patternLib functions one by one
+=> main wont work.
+
+then add one more function in patternUtil
+which converts array to string
+
+finally main will console.log the string
