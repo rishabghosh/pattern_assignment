@@ -1,9 +1,7 @@
 const assertEq = require('assert').equal;
-const patternLib = require('../src/patternLib.js');
-
-const {createRectangle} = patternLib;
-const {createTriangle} = patternLib;
-const {createDiamond} = patternLib;
+const {createRectangle,
+  createTriangle,
+  createDiamond} = require('../src/patternLib.js');
 
 /* --------- LOGGING --------- */
 

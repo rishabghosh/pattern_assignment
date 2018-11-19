@@ -4,9 +4,9 @@ const {createDash,
   createSpace,
   generateLine,
   createHollowLine,
-  generateDashWidth,
-  generateStar,
-  generateSpace,
+  generateDashLine,
+  generateStarLine,
+  generateSpaces,
   generateActualHeight,
   heightOfTriangle,
   createSlashedStructure,
@@ -25,7 +25,7 @@ const generateLog = function(input, expected, actual){
 /* ------ TEST GENERATE DASH WIDTH ------- */
 
 const testGenerateDashWidth = function(width, expected){
-  let actual = generateDashWidth(width);
+  let actual = generateDashLine(width);
   generateLog({width: width}, expected, actual);
   assertEq(actual, expected);
 }
@@ -39,7 +39,7 @@ testGenerateDashWidth(3, "---");
 /* ----- TEST GENERATE STAR ----- */
 
 const testGenerateStar = function(width, expected){
-  let actual = generateStar(width);
+  let actual = generateStarLine(width);
   generateLog({width: width}, expected, actual);
   assertEq(actual, expected);
 }
@@ -53,7 +53,7 @@ testGenerateStar(3, "***");
 /* ------ TEST GENERATE SPACE ------- */
 
 const testGenerateSpace = function(width, expected){
-  let actual = generateSpace(width);
+  let actual = generateSpaces(width);
   generateLog({width: width}, expected, actual);
   assertEq(actual, expected);
 }
