@@ -1,6 +1,8 @@
 const createDash = function(){ return "-" } 
 const createStar = function(){ return "*" } 
 const createSpace = function(){ return " " }
+const createSlash = function(){ return "/" }
+const createFrontSlash = function(){ return "\\" }
 
 //generate strings of  given length and return value of internal function
 
@@ -82,3 +84,5 @@ exports.createDash = createDash;
 exports.createStar = createStar;
 exports.createSpace = createSpace;
 exports.generateLine = generateLine;
+exports.createSlash = createSlash;
+exports.createFrontSlash = createFrontSlash;
